@@ -43,6 +43,7 @@ export const sendEmail = async ({ email, emailType, userId }: SendEmailOptions) 
     return mailResponse;
 
   } catch (error: any) {
+    console.log("hello")
     throw new Error(error.message);
   }
 };
