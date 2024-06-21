@@ -18,6 +18,10 @@ export async function POST(request: NextRequest) {
         console.log(reqBody);
 
 
+        console.log("MONGO_URI:", process.env.MONGO_URI);
+
+
+
         const user = await User.findOne({email})
 
         if (user) {
@@ -33,6 +37,9 @@ export async function POST(request: NextRequest) {
             email,
             password: hashedPassword
         })
+        console.log(username, email, password)
+
+
 
          const savedUser = await newUser.save()
          console.log(savedUser)
@@ -41,6 +48,7 @@ export async function POST(request: NextRequest) {
          // send verification email
 
          await sendEmail({email, emailType: 'VERIFY', userId: savedUser._id})
+         console.log(savedUser._id)
 
          return NextResponse.json({
             message: 'User registered successfully',

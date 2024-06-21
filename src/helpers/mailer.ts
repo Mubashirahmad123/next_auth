@@ -12,6 +12,15 @@ export const sendEmail = async ({ email, emailType, userId }: SendEmailOptions) 
   try {
     // Hash the userId to create a token
     const hashedToken = await bcryptjs.hash(userId.toString(), 10);
+     
+    console.log("Start test ")
+    console.log("Mail", userId)
+    console.log("EmailType", emailType)
+    console.log("Email", email)
+    console.log(typeof emailType)
+
+
+
 
     // Update the user's document with the appropriate token and expiry time
     const updateData = emailType === 'VERIFY'

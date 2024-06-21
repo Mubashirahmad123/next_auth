@@ -8,7 +8,7 @@ export async function connect(){
 
        const connection = mongoose.connection
        
-       connection.on('connected', () =>{
+       connection.on('connected', () => {
            console.log("Mongodb connected")
        })
 
@@ -16,11 +16,11 @@ export async function connect(){
         console.log("Mongodb connection error, please make sure db is up and running: " + error);
 
         process.exit()
+
        })
         
     } catch (error) {
         console.log('something went wrong to db')
-
         console.log(error)
     }
 
