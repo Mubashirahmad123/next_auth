@@ -4,13 +4,17 @@ import React from "react";
 import axios from "axios";
 import Link from "next/link";
 import { toast } from "react-hot-toast";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function ProfilePage() {
+    const router = useRouter();
+
+
   const [data, setData] = useState("nothing");
 
   const getUserDetails = async () => {
+
     try {
       const res = await axios.post("/api/users/me");
     //   console.log("hello")
@@ -23,7 +27,7 @@ export default function ProfilePage() {
   };
 
   const logout = async () => {
-    const router = useRouter();
+
 
     try {
       await axios.get("/api/users/logout");
